@@ -1,0 +1,6 @@
+-rrequirements.txt
+codecov
+pytest
+pytest-cov
+python-dotenv
+tox
