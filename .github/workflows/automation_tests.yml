@@ -27,7 +27,7 @@ jobs:
                 pip install tox
 
             - name: Run Tests
-              run: tox
+              run: tox -r -e dev
 
             - name: Upload coverage to Codecov
               uses: codecov/codecov-action@v5
