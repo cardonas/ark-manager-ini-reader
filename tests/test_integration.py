@@ -72,7 +72,8 @@ Integration test to validate the main function interacting with Google Cloud Sto
     # Test data for the request
     request_data = {"bucket_name": setup_test_bucket.name}
 
-    response = requests.post(os.getenv('URL'), json=request_data, headers={"Content-Type": "application/json"})
+    response = requests.post(os.getenv('HTTPS_TRIGGER_URL'), json=request_data,
+                             headers={"Content-Type": "application/json"})
 
     assert response.status_code == 200
 
