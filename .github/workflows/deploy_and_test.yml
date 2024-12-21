@@ -47,7 +47,7 @@ jobs:
         uses: google-github-actions/upload-cloud-storage@v1
         with:
           path: ini-reader.zip
-          destination: ark-manager-artifacts-${{ github.event.inputs.env }}/ini-reader.zip
+          destination: "ark-manager-artifacts-${{ github.event.inputs.env }}/"
           process_gcloudignore: false
 
   deploy:
