@@ -16,7 +16,7 @@ on:
           - prod
 
 env:
-  ENVIRONMENT:
+  ENVIRONMENT: |
     ${{ github.event_name == 'workflow_dispatch' ? github.event.inputs.environment: 'dev' }}
 
 permissions:
