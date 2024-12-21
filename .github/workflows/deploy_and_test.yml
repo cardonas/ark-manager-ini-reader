@@ -48,6 +48,7 @@ jobs:
         with:
           path: ini-reader.zip
           destination: ark-manager-artifacts-${{ github.event.inputs.env }}/ini-reader.zip
+          process_gcloudignore: false
 
   deploy:
     name: Deploy to Cloud Function
