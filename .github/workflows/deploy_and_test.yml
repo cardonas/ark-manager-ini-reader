@@ -46,8 +46,8 @@ jobs:
       - name: Upload to Google Cloud Storage
         uses: google-github-actions/upload-cloud-storage@v1
         with:
-          path: app.zip
-          destination: ark-manager-artifacts-dev/app.zip
+          path: ini-reader.zip
+          destination: ark-manager-artifacts-${{ github.event.inputs.env }}/ini-reader.zip
 
   deploy:
     name: Deploy to Cloud Function
