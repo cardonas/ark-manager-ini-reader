@@ -25,6 +25,9 @@ jobs:
     runs-on: ubuntu-latest
     environment: ${{ github.event.inputs.env || 'dev' }}
 
+    outputs:
+      gs_uri: ${{ steps.upload-to-gcs.outputs.uri }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -86,7 +89,7 @@ jobs:
             -var="region=${{ secrets.GCP_REGION }}" \
             -var="function_name=ini-reader" \
             -var="artifact_bucket=ark-manager-artifacts-${{ github.event.inputs.env }}" \
-            -var="function_source=gs://ark-manager-artifacts-${{ github.event.inputs.env }}/ini-reader.zip" \
+            -var="function_source=${{ needs.upload.outputs.gs_uri }}" \
             -var="service_account_email=${{ secrets.GCP_SERVICE_ACCOUNT_EMAIL }}" \
             -out=tfplan
         working-directory: ./terraform-module/modules/cloud_function
