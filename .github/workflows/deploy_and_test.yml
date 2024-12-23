@@ -85,8 +85,8 @@ jobs:
             -var="project=${{ secrets.GCP_PROJECT_ID }}" \
             -var="region=${{ secrets.GCP_REGION }}" \
             -var="function_name=ini-reader" \
-            -var="artifact_bucket=ark-manager-artifacts-${{ env.ENVIRONMENT }}" \
-            -var="function_source=gs://ark-manager-artifacts-${{ env.ENVIRONMENT }}/ini-reader.zip" \
+            -var="artifact_bucket=ark-manager-artifacts-${{ github.event.inputs.env }}" \
+            -var="function_source=gs://ark-manager-artifacts-${{ github.event.inputs.env }}/ini-reader.zip" \
             -var="service_account_email=${{ secrets.GCP_SERVICE_ACCOUNT_EMAIL }}" \
             -out=tfplan
         working-directory: ./terraform-module/modules/cloud_function
