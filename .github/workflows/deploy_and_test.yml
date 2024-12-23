@@ -80,7 +80,7 @@ jobs:
 
       - name: Terraform Plan
         run: |
-          echo ${{ secrets.GCP_REGION }}
+          echo ${{ github.event.inputs.env }}
           terraform plan \
             -var="project=${{ secrets.GCP_PROJECT_ID }}" \
             -var="region=${{ secrets.GCP_REGION }}" \
