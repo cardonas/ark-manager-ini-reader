@@ -83,7 +83,7 @@ jobs:
           terraform plan \
             -var="project=${{ secrets.GCP_PROJECT_ID }}" \
             -var="region=${{ secrets.GCP_REGION }}" \
-            -var="function_name=ark-manager-function-${{ env.ENVIRONMENT }}" \
+            -var="function_name="ini-reader" \
             -var="artifact_bucket=ark-manager-artifacts-${{ env.ENVIRONMENT }}" \
             -var="function_source=gs://ark-manager-artifacts-${{ env.ENVIRONMENT }}/ini-reader.zip" \
             -var="service_account_email=${{ secrets.GCP_SERVICE_ACCOUNT_EMAIL }}" \
