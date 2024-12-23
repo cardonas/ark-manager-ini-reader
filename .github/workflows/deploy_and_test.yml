@@ -76,7 +76,7 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
-        working-directory: ./terraform-module/cloud_function
+        working-directory: ./terraform-module/modules/cloud_function
 
       - name: Terraform Plan
         run: |
@@ -88,14 +88,14 @@ jobs:
             -var="function_source=gs://ark-manager-artifacts-${{ env.ENVIRONMENT }}/ini-reader.zip" \
             -var="service_account_email=${{ secrets.GCP_SERVICE_ACCOUNT_EMAIL }}" \
             -out=tfplan
-        working-directory: ./terraform-module/cloud_function
+        working-directory: ./terraform-module/modules/cloud_function
 
       - name: Terraform Apply
         run: |
           terraform apply -auto-approve tfplan
           OUTPUT=$(terraform output -json | jq -r '.function_url.value')
           echo "HTTPS_TRIGGER_URL=$OUTPUT" >> $GITHUB_ENV
-        working-directory: ./terraform-module/cloud_function
+        working-directory: ./terraform-module/modules/cloud_function
 
   test:
     name: Run Integration Tests
